@@ -1,0 +1,61 @@
+
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* Sonner toast color overrides (use CSS variables defined in Toaster component) */
+.toaster [data-toast-type="success"],
+.toaster .toast[data-toast-type="success"] {
+	background-color: var(--success-bg) !important;
+	color: var(--success-text) !important;
+}
+
+.toaster [data-toast-type="error"],
+.toaster .toast[data-toast-type="error"] {
+	background-color: var(--error-bg) !important;
+	color: var(--error-text) !important;
+}
+
+/* Fallback selector if sonner uses .success/.error classes */
+.toaster .success {
+	background-color: var(--success-bg) !important;
+	color: var(--success-text) !important;
+}
+.toaster .error {
+	background-color: var(--error-bg) !important;
+	color: var(--error-text) !important;
+}
+
+/* Ensure toaster is visible above app layers */
+.toaster {
+	z-index: 9999 !important;
+	pointer-events: auto !important;
+}
+
+/* Broader selectors to catch different Sonner versions / DOM shapes */
+.toaster [data-toast-type*="success"],
+.toaster [data-variant*="success"],
+.toaster [data-type*="success"],
+.toaster [data-status*="success"],
+.toaster [class*="success"],
+.toaster .success,
+.toaster [data-toast-type*="warning"],
+.toaster [data-variant*="warning"],
+.toaster [data-type*="warning"],
+.toaster [data-status*="warning"],
+.toaster [class*="warning"],
+.toaster .warning {
+	/* use CSS variables set on the Toaster component as primary, fallbacks provided */
+	background-color: var(--success-bg, rgb(16 185 129)) !important;
+	color: var(--success-text, white) !important;
+}
+
+/* warning specific tweak (yellow/orange) */
+.toaster [data-toast-type*="warning"],
+.toaster [data-variant*="warning"],
+.toaster [data-type*="warning"],
+.toaster [data-status*="warning"],
+.toaster [class*="warning"],
+.toaster .warning {
+	background-color: rgb(245 158 11) !important; /* amber-500 */
+	color: white !important;
+}
